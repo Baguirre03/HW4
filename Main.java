@@ -91,148 +91,146 @@ public class Main {
         hashmap.put("Key_49", 49);
         hashmap.put("Key_50", 50);
 
-
         /*******************************************************************
          *
-         *              Tests for the myHashMap remove(K) method
+         * Tests for the myHashMap remove(K) method
          *
          ******************************************************************/
 
         // remove() should return null, as key does not exist in hashmap
-        if ( hashmap.remove("NOT FOUND") != null ) {
+        if (hashmap.remove("NOT FOUND") != null) {
             System.out.println("Error 1: remove failed");
             removeErrorFlag = true;
         }
 
         // remove() returns the node object deleted, key should exist and been deleted
-        if ( ! removeErrorFlag && hashmap.remove("Key_5") == null ) {
+        if (!removeErrorFlag && hashmap.remove("Key_5") == null) {
             System.out.println("Error 2: remove failed");
             removeErrorFlag = true;
         }
 
         // The K/V pair <Key_4,4> should be in hashmap, verify the value can be found
-        if ( ! removeErrorFlag && ! hashmap.containsValue(4)) {
+        if (!removeErrorFlag && !hashmap.containsValue(4)) {
             System.out.println("Error 3: containsValues failed");
             removeErrorFlag = true;
         }
 
         // The K/V pair <Key_4,4> should be in hashmap, verify the key can be found
-        if ( ! removeErrorFlag && ! hashmap.containsKey("Key_4")) {
+        if (!removeErrorFlag && !hashmap.containsKey("Key_4")) {
             System.out.println("Error 4: containsKey failed");
             removeErrorFlag = true;
         }
 
-        // The K/V pair <Key_5,5> has already been deleted, verify the value is not found
-        if ( ! removeErrorFlag && hashmap.containsValue(5)) {
+        // The K/V pair <Key_5,5> has already been deleted, verify the value is not
+        // found
+        if (!removeErrorFlag && hashmap.containsValue(5)) {
             System.out.println("Error 5: containsValues failed");
             removeErrorFlag = true;
         }
 
         // The K/V pair <Key_5,5> has already deleted, verify key is not found
-        if ( ! removeErrorFlag && hashmap.containsKey("Key_5")) {
+        if (!removeErrorFlag && hashmap.containsKey("Key_5")) {
             System.out.println("Error 6: containsKey failed");
             removeErrorFlag = true;
         }
 
         // There should be 49 elements contained within the hashmap, verify.
-        if ( removeErrorFlag && hashmap.Size() != 49 ) {
+        if (removeErrorFlag && hashmap.Size() != 49) {
             System.out.println("Error 7: Size failed");
             removeErrorFlag = true;
         }
 
-
         /*******************************************************************
          *
-         *            Tests for the myHashMap replace(K,V) method
+         * Tests for the myHashMap replace(K,V) method
          *
          ******************************************************************/
-      
+
         oldValue = hashmap.replace("Key_8", 16);
 
         // verify replace returned the previous value, which should be 8
-        if ( oldValue != 8 ) {
+        if (oldValue != 8) {
             System.out.println("Error 8: replace failed");
             replaceErrorFlag = true;
         }
 
         // The value 8 should no longer exit in the hashmap
-        if ( ! replaceErrorFlag && hashmap.containsValue(8)) {
+        if (!replaceErrorFlag && hashmap.containsValue(8)) {
             System.out.println("Error 9: containsValues failed");
             replaceErrorFlag = true;
         }
 
         // The value 8 was replaced with 16, this new value should be found
-        if ( ! replaceErrorFlag && ! hashmap.containsValue(16)) {
+        if (!replaceErrorFlag && !hashmap.containsValue(16)) {
             System.out.println("Error 10: containsValues failed");
             replaceErrorFlag = true;
         }
 
         // 'Key_8' should still be found in the hashmap
-        if ( ! replaceErrorFlag && ! hashmap.containsKey("Key_8")) {
+        if (!replaceErrorFlag && !hashmap.containsKey("Key_8")) {
             System.out.println("Error 11: containsKey failed");
             replaceErrorFlag = true;
         }
 
-
         /*******************************************************************
          *
-         *          Tests for the myHashMap replace(K,V, V) method
+         * Tests for the myHashMap replace(K,V, V) method
          *
          ******************************************************************/
 
         // false should be returned, as Key_9's value is not 0
-        if ( ! replaceErrorFlag && hashmap.replace("Key_9", 0, 100 ) ) {
+        if (!replaceErrorFlag && hashmap.replace("Key_9", 0, 100)) {
             System.out.println("Error 12: replace failed");
             replaceErrorFlag = true;
         }
 
         // true should be returned, as Key_9's value is 9
-        if ( ! replaceErrorFlag && ! hashmap.replace("Key_9", 9, 100 ) ) {
+        if (!replaceErrorFlag && !hashmap.replace("Key_9", 9, 100)) {
             System.out.println("Error 13: replace failed");
             replaceErrorFlag = true;
         }
 
         // There is no key String_1, so false should be returned
-        if ( ! replaceErrorFlag && hashmap.replace("String_1", 9, 100 ) ) {
+        if (!replaceErrorFlag && hashmap.replace("String_1", 9, 100)) {
             System.out.println("Error 14: replace failed");
             replaceErrorFlag = true;
         }
 
         // The value 9 was replaced with 100 above, this new value should be found
-        if ( ! replaceErrorFlag && ! hashmap.containsValue(100)) {
+        if (!replaceErrorFlag && !hashmap.containsValue(100)) {
             System.out.println("Error 15: containsValues failed");
             replaceErrorFlag = true;
         }
 
         // 'Key_9' should be found in the hashmap
-        if ( ! replaceErrorFlag && ! hashmap.containsKey("Key_9")) {
+        if (!replaceErrorFlag && !hashmap.containsKey("Key_9")) {
             System.out.println("Error 16: containsKey failed");
             replaceErrorFlag = true;
         }
 
-
         /*
-         * You can temporarily un-comment either the subsequent and/or both statements iff
-         * you want to visually see what is in the HashMap for debugging purposes. Do recall,
-         * that unlike trees, hashmaps retain no order, so they will not be displayed in the
-         * insertion order. But, recommend instead use your IDE debugger to debug instead.
+         * You can temporarily un-comment either the subsequent and/or both statements
+         * iff
+         * you want to visually see what is in the HashMap for debugging purposes. Do
+         * recall,
+         * that unlike trees, hashmaps retain no order, so they will not be displayed in
+         * the
+         * insertion order. But, recommend instead use your IDE debugger to debug
+         * instead.
          */
 
-        //System.out.println("HashMap Ks only : " + hashmap.keySet());
-        //System.out.println("\nHashMap K/Vs  : " + hashmap.entrySet() + "\n");
-
-
+        // System.out.println("HashMap Ks only : " + hashmap.keySet());
+        // System.out.println("\nHashMap K/Vs : " + hashmap.entrySet() + "\n");
 
         /*
          *
-         *  Testing now the methods in the object HashingProblems
+         * Testing now the methods in the object HashingProblems
          *
          */
-
 
         /*******************************************************************
          *
-         *          Tests HashingProblems for getAverage
+         * Tests HashingProblems for getAverage
          *
          ******************************************************************/
 
@@ -244,29 +242,29 @@ public class Main {
         hash_map.put(5, 50);
         hash_map.put(12, 100);
         hash_map.put(3, 3);
-        int[] arr1 = {100, 1, 2, 9, 7, 8, 15};
-        int[] arr2 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+        int[] arr1 = { 100, 1, 2, 9, 7, 8, 15 };
+        int[] arr2 = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
 
         // based on the above values, the average should be 15.0
-        if ( hp.getAverage(hash_map, arr1) != (double) 15.0 ) {
+        if (hp.getAverage(hash_map, arr1) != (double) 15.0) {
             System.out.println("Error 17: getAverage failed");
             getAverageErrorFlag = true;
         }
 
         // based on the above values, the average should be 36.6
-        if ( ! getAverageErrorFlag && hp.getAverage(hash_map, arr2) != (double) 36.6 ) {
+        if (!getAverageErrorFlag && hp.getAverage(hash_map, arr2) != (double) 36.6) {
             System.out.println("Error 18: getAverage failed");
             getAverageErrorFlag = true;
         }
 
-
         /*******************************************************************
          *
-         *          Tests HashingProblems for odd
+         * Tests HashingProblems for odd
          *
          ******************************************************************/
 
-        ArrayList<String> ArrayList1 = new ArrayList<String>( Arrays.asList("Diana", "Adam", "Kavitha", "Mushjtaba", "Peter"));
+        ArrayList<String> ArrayList1 = new ArrayList<String>(
+                Arrays.asList("Diana", "Adam", "Kavitha", "Mushjtaba", "Peter"));
         ArrayList<String> ArrayList2 = new ArrayList<String>();
         HashMap<Integer, String> hash_map2 = new HashMap<>();
         hash_map2.put(1, "Diana");
@@ -288,33 +286,32 @@ public class Main {
          * debugger to debug instead.
          */
 
-        //System.out.println("Result should be the following: <" + ArrayList1 + ">");
-        //System.out.println("Result is as follows          : <" + ArrayList2 + ">");
+        // System.out.println("Result should be the following: <" + ArrayList1 + ">");
+        // System.out.println("Result is as follows : <" + ArrayList2 + ">");
 
-        if (ArrayList1.equals(ArrayList2) == false ) {
+        if (ArrayList1.equals(ArrayList2) == false) {
             System.out.println("Error 19: odd failed");
             oddErrorFlag = true;
         }
 
-
         /*******************************************************************
          *
-         *          Tests HashingProblems for twoSums
+         * Tests HashingProblems for twoSums
          *
          ******************************************************************/
 
-        int [] numberList = new int[] {1,4,5,7,8,9};
+        int[] numberList = new int[] { 1, 4, 5, 7, 8, 9 };
         int k1 = 4;
         int k2 = 5;
 
         // When k=4, answer should be 3
-        if ( hp.twoSums(numberList, k1) != 3 ) {
+        if (hp.twoSums(numberList, k1) != 3) {
             System.out.println("Error 20: twoSums failed");
             twoSumsErrorFlag = true;
         }
 
         // When k=5, answer should be 1
-        if ( ! twoSumsErrorFlag && hp.twoSums(numberList, k2) != 1 ) {
+        if (!twoSumsErrorFlag && hp.twoSums(numberList, k2) != 1) {
             System.out.println("Error 21: twoSums failed");
             twoSumsErrorFlag = true;
         }
@@ -325,18 +322,19 @@ public class Main {
          * debugger to debug instead.
          */
 
-        //System.out.println("TwoSums where k=" + k1 + ", result was: " + hp.twoSums(numberList, k1));
-        //System.out.println("TwoSums where k=" + k2 + ", result was: " + hp.twoSums(numberList, k2));
-
-
+        // System.out.println("TwoSums where k=" + k1 + ", result was: " +
+        // hp.twoSums(numberList, k1));
+        // System.out.println("TwoSums where k=" + k2 + ", result was: " +
+        // hp.twoSums(numberList, k2));
 
         /*******************************************************************
          *
-         *                   Calculate the final score
+         * Calculate the final score
          *
-         ********************************************8*********************/
+         ******************************************** 8
+         *********************/
 
-        if ( ! removeErrorFlag ) {
+        if (!removeErrorFlag) {
             assignmentScore += 25;
             System.out.println("Automated HashMap remove testing terminated  -- tests PASSED");
         } else {
@@ -344,7 +342,7 @@ public class Main {
         }
 
         // Adjust assignment score for TreeMap removeEven testing
-        if ( ! replaceErrorFlag ) {
+        if (!replaceErrorFlag) {
             assignmentScore += 25;
             System.out.println("Automated Hashmap replace testing terminated -- tests PASSED");
         } else {
@@ -352,7 +350,7 @@ public class Main {
         }
 
         // Adjust assignment score for HashingProblems getAverage testing
-        if ( ! getAverageErrorFlag ) {
+        if (!getAverageErrorFlag) {
             assignmentScore += 15;
             System.out.println("Automated HashingProblems, getAvg terminated -- tests PASSED");
         } else {
@@ -360,7 +358,7 @@ public class Main {
         }
 
         // Adjust assignment score for HashingProblems odd testing
-        if ( ! oddErrorFlag ) {
+        if (!oddErrorFlag) {
             assignmentScore += 10;
             System.out.println("Automated HashingProblems, odd terminated    -- tests PASSED");
         } else {
@@ -368,7 +366,7 @@ public class Main {
         }
 
         // Adjust assignment score for HashingProblems odd testing
-        if ( ! twoSumsErrorFlag ) {
+        if (!twoSumsErrorFlag) {
             assignmentScore += 25;
             System.out.println("Automated HashingProblems, twoSum terminated -- tests PASSED");
         } else {

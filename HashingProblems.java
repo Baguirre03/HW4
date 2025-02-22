@@ -38,16 +38,15 @@ class HashingProblems {
      */
 
     public double getAverage(HashMap<Integer, Integer> map, int[] array) {
-
-        /*
-         * ADD YOUR CODE HERE - DO NOT FORGET TO ADD YOU NAME AT TOP OF FILE
-         *
-         * Note: if NO values found in common between the HashMap and supplied array,
-         * returning 0.0 is NOT correct, as that is not the average value. Whereas
-         * returning 0.0/0.0 IS correct (which would return a non-number).
-         */
-
-        return 0.0 / 0.0;
+        double matches = 0;
+        double sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (map.get(array[i]) != null) {
+                sum += map.get(array[i]);
+                matches++;
+            }
+        }
+        return matches == 0 ? 0.0 / 0.0 : sum / matches;
     }
 
     /*
@@ -61,12 +60,11 @@ class HashingProblems {
     public ArrayList<String> odd(HashMap<Integer, String> map) {
 
         ArrayList<String> result = new ArrayList<>();
-
-        /*
-         * ADD YOUR CODE HERE
-         *
-         * Hint: Consider iterating over the HashMap using the keySet method.
-         */
+        for (int key : map.keySet()) {
+            if (key % 2 != 0) {
+                result.add(map.get(key));
+            }
+        }
 
         return result;
     }
@@ -121,12 +119,34 @@ class HashingProblems {
      */
 
     public int twoSums(int[] numbers, int k) {
+        HashSet<Integer> set = new HashSet<>();
+        // add all numbers to hashset
+        for (int number : numbers) {
+            set.add(number);
+        }
+        int res = 0; // declare result
+        // iterate through again
+        for (int number : numbers) {
+            // if the hashset has the difference then add 1 to the result
+            int difference = number - k;
+            if (set.contains(difference)) {
+                res += 1;
+            }
+        }
+
+        return res;
 
         /*
-         * ADD YOUR CODE HERE
+         * NOTE ON THIS PROBLEM: this is only for an array that does NOT contain
+         * duplicates
+         * if we wanted to do it WITH duplicates then a hashmap would work better where
+         * we use
+         * HashMap<Element, Count of Element> so instead of adding one to the result we
+         * would instead
+         * add HashMap.get(element) (count of element) to the result to get the correct
+         * output
+         * 
          */
-
-        return -1;
     }
 
 } /* end class HashingProblems */
