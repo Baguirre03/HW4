@@ -425,15 +425,19 @@ class myHashMap<K, V> {
      */
 
     public V replace(K key, V val) {
+        int bucketIndex = getBucketIndex(key);
+        HashNode<K, V> head = bucket.get(bucketIndex);
 
-        /*
-         * ADD YOUR CODE HERE - DO NOT FORGET TO ADD YOUR NAME AT TOP OF FILE
-         *
-         * Make sure you return the proper value based on the outcome of this method's
-         * replace (see method's prologue above).
-         */
+        while (head != null) {
+            if (head.key.equals(key)) {
+                V tmpVal = head.value;
+                head.value = val;
+                return tmpVal;
+            }
+            head = head.next;
+        }
 
-        return val;
+        return null;
     }
 
     /**
@@ -453,16 +457,22 @@ class myHashMap<K, V> {
      */
 
     public boolean replace(K key, V oldVal, V newVal) {
-
         /*
-         * ADD YOUR CODE HERE
-         *
-         * This method should apply the precondition (aka, the Key already exists with
-         * the
-         * value 'oldval', and is so, it SHOULD call replace(K, V) for code reuse.
+         * * @return V - returns the old value for the <k,v> pair,
+         * else null if not found. (java doc comment) => the original function returns a
+         * boolean
+         * so this must be an error in the javadoc (instead return false for cant
+         * replace and true for replaced)
          */
+        V nodeVal = get(key); // find node value
+        if (nodeVal == null || !nodeVal.equals(oldVal)) {
+            // if value is null or doesnt equal old val return false
+            return false;
+        }
 
-        return false;
+        // else replace and return true because its replaced
+        replace(key, newVal);
+        return true;
     }
 
     /**
